@@ -1,0 +1,5 @@
+.aligned .form-row.field-choices input {
+  width: 90%;
+  min-width: 280px;
+  margin-bottom: 10px;
+}
