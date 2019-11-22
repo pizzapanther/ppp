@@ -2,7 +2,7 @@ from django import forms
 from django.contrib import admin
 from django.contrib.postgres.forms import SplitArrayField
 
-from polls.models import Poll, Vote
+from polls.models import Presentation, Poll, Vote
 
 class VoteInline(admin.TabularInline):
   model = Vote
@@ -20,10 +20,17 @@ class PollForm(forms.ModelForm):
   class Media:
     css = {'screen': ("admin/poll.css",)}
 
+class PollInline(admin.TabularInline):
+  model = Poll
+
+@admin.register(Presentation)
+class PresentationAdmin(admin.ModelAdmin):
+  list_display = ('title', 'slug')
+  inlines = [PollInline]
 
 @admin.register(Poll)
 class PollAdmin(admin.ModelAdmin):
-  list_display = ('question', 'slug', 'published', 'ended')
-  raw_id_fields = ('next_poll',)
+  list_display = ('question', 'published', 'ended')
+  raw_id_fields = ('presentation',)
   inlines = [VoteInline]
   form = PollForm
