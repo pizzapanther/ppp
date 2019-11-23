@@ -30,7 +30,7 @@ class PresentationAdmin(admin.ModelAdmin):
 
 @admin.register(Poll)
 class PollAdmin(admin.ModelAdmin):
-  list_display = ('question', 'published', 'ended')
+  list_display = ('question', 'live')
   raw_id_fields = ('presentation',)
   inlines = [VoteInline]
   form = PollForm

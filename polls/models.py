@@ -13,10 +13,7 @@ class Presentation(models.Model):
 class Poll(models.Model):
   question = models.CharField(max_length=254)
   choices = ArrayField(models.CharField(max_length=254))
-
-  published = models.BooleanField(default=False)
-  ended = models.BooleanField(default=False)
-
+  live = models.BooleanField(default=False)
   created = models.DateTimeField(auto_now_add=True)
 
   presentation = models.ForeignKey(Presentation, on_delete=models.SET_NULL, blank=True, null=True)
@@ -26,6 +23,13 @@ class Poll(models.Model):
 
   def __str__(self):
     return self.question
+
+  def json_data(self):
+    return {
+      'id': self.id,
+      'question': self.question,
+      'choices': self.choices
+    }
 
 
 class Vote(models.Model):

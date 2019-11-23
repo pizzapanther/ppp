@@ -1,0 +1,38 @@
+<!DOCTYPE html>{% load static %}
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <title>{{ pres.title }} Embed</title>
+</head>
+<body>
+  <div id="app">
+    <v-app>
+      <v-content>
+        <v-container>
+          <poll :data="poll_data"></poll>
+          <v-btn @click="end_poll()" v-if="started">
+            End
+          </v-btn>
+          <v-btn @click="start_poll()" v-else>
+            Start
+          </v-btn>
+        </v-container>
+      </v-content>
+    </v-app>
+  </div>
+  <script>
+    var PRES = {
+      slug: '{{ pres.slug }}'
+    }
+  </script>
+  {{ poll.json_data|json_script:"poll-data" }}
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script src="https://js.pusher.com/5.0/pusher.min.js"></script>
+  <script src="{% static 'poll.js' %}"></script>
+  <script src="{% static 'ppp-embed.js' %}"></script>
+</body>
+</html>

@@ -128,3 +128,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static-compiled")
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+PUSHER = {
+    'app_id': os.environ.get('PUSHER_APP_ID'),
+    'key': os.environ.get('PUSHER_KEY'),
+    'secret': os.environ.get('PUSHER_SECRET'),
+    'cluster': os.environ.get('PUSHER_CLUSTER'),
+    'ssl': True
+}
