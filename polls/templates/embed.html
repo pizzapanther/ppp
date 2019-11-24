@@ -6,31 +6,38 @@
   <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
   <title>{{ pres.title }} Embed</title>
+  <style>
+    {% include "poll.css" %}
+  </style>
 </head>
 <body>
   <div id="app">
     <v-app>
       <v-content>
         <v-container>
-          <poll :data="poll_data"></poll>
+          <poll :data="poll_data" :admin="true"></poll>
           <v-btn @click="end_poll()" v-if="started">
             End
           </v-btn>
           <v-btn @click="start_poll()" v-else>
             Start
-          </v-btn>
+          </v-btn> &nbsp;&nbsp;
+          {% verbatim %}{{ time }}{% endverbatim %}
         </v-container>
       </v-content>
     </v-app>
   </div>
   <script>
     var PRES = {
-      slug: '{{ pres.slug }}'
+      slug: '{{ pres.slug }}',
+      key: '{{ key }}'
     }
   </script>
   {{ poll.json_data|json_script:"poll-data" }}
   <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue-apexcharts"></script>
   <script src="https://js.pusher.com/5.0/pusher.min.js"></script>
   <script src="{% static 'poll.js' %}"></script>
   <script src="{% static 'ppp-embed.js' %}"></script>

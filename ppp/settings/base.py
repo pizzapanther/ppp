@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.postgres',
     'django.contrib.staticfiles',
+    'huey.contrib.djhuey',
     'djzen',
     'polls',
 ]
@@ -82,6 +83,12 @@ WSGI_APPLICATION = 'ppp.wsgi.application'
 DATABASES = {
     'default':
         dj_database_url.config(default='postgres://postgres@localhost:5432/ppp')
+}
+
+HUEY = {
+    'name': 'ppp',
+    'url': os.environ.get('REDIS_URL', 'redis://localhost:6379') + '/?db=1',
+    'immediate': False,
 }
 
 

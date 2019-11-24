@@ -9,6 +9,9 @@ class Presentation(models.Model):
   def __str__(self):
     return self.title
 
+  def current(self):
+    return self.poll_set.filter(live=True).first()
+
 
 class Poll(models.Model):
   question = models.CharField(max_length=254)
@@ -25,10 +28,15 @@ class Poll(models.Model):
     return self.question
 
   def json_data(self):
+    votes = []
+    for (i, choice) in enumerate(self.choices):
+      votes.append(self.vote_set.filter(choice=i).count())
+
     return {
       'id': self.id,
       'question': self.question,
-      'choices': self.choices
+      'choices': self.choices,
+      'votes': votes
     }
 
 

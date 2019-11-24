@@ -1,3 +1,6 @@
+Vue.use(VueApexCharts);
+Vue.component('apexchart', VueApexCharts);
+
 var app = new Vue({
   el: '#app',
   vuetify: new Vuetify(),
@@ -5,30 +8,45 @@ var app = new Vue({
   data() {
     return {
       started: false,
-      poll_data: JSON.parse(document.getElementById('poll-data').textContent)
+      poll_data: JSON.parse(document.getElementById('poll-data').textContent),
+      time: 0
     };
   },
   created() {
     Pusher.logToConsole = true;
-    this.pusher = new Pusher('4650332133f87c946611', {
+    this.pusher = new Pusher(PRES.key, {
       cluster: 'us3',
       forceTLS: true
     });
 
     this.channel = this.pusher.subscribe(PRES.slug);
     this.channel.bind('stats', (data) => {
-      this.stats(data)
+      if (JSON.stringify(this.poll_data.votes) != JSON.stringify(data.votes)) {
+        this.poll_data = data;
+      }
     });
   },
   methods: {
     stats(data) {
       console.log(data);
     },
+    update_time() {
+      this.time += 1;
+      if (this.started) {
+        setTimeout(() => {
+          this.update_time();
+        }, 1000);
+      }
+    },
     start_poll() {
       fetch('./start', {method: 'POST'})
         .then((response) => {
           if (response.status == 200) {
             this.started = true;
+            this.time = 0;
+            setTimeout(() => {
+              this.update_time();
+            }, 1000);
           } else {
             alert(response.status);
           }
