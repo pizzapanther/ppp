@@ -3,8 +3,14 @@ var PollComponent = {
   template: `
 <div class="poll">
   <h2>{{ data.question }}</h2>
-  <div class="choices" v-if="!admin">
+  <div v-if="admin" class="admin-questions">
+    <div v-for="(choice, index) in data.choices" :key="index">
+      {{ index + 1 }}. {{ choice }}
+    </div>
+  </div>
+  <div class="choices" v-else>
     <v-btn v-for="(choice, index) in data.choices"
+      small
       :key="index"
       color="accent"
       @click="do_vote(index)"
@@ -14,7 +20,7 @@ var PollComponent = {
     </v-btn>
   </div>
   <div class="donut">
-    <apexchart type=donut width=380 :options="opts" :series="series" />
+    <apexchart type=donut width=300 :options="opts" :series="series" />
   </div>
 </div>`,
   data() {
@@ -32,7 +38,10 @@ var PollComponent = {
         labels.push(c);
       });
       return {
-        labels: labels
+        labels: labels,
+        legend: {
+          position: 'bottom'
+        }
       };
     },
     series(){
