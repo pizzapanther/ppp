@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.postgres',
     'django.contrib.staticfiles',
+    'social_django',
     'huey.contrib.djhuey',
     'djzen',
     'polls',
@@ -143,3 +144,5 @@ PUSHER = {
     'cluster': os.environ.get('PUSHER_CLUSTER'),
     'ssl': True
 }
+
+from ppp.settings.auth import *

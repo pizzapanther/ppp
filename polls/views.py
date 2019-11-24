@@ -11,6 +11,7 @@ import pusher
 from polls.models import Presentation, Poll, Vote
 from polls.tasks import push_stats
 
+@login_required
 def presentation(request, slug):
   pres = get_object_or_404(Presentation, slug=slug)
   context = {'pres': pres, 'key': settings.PUSHER['key']}
