@@ -31,6 +31,7 @@ ALLOWED_HOSTS = [
     'localhost',
     'pizzapanther.ngrok.io',
     'pizzapanther-poll.herokuapp.com',
+    'www.ppp.wtf',
 ]
 
 
