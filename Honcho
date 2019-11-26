@@ -1,0 +1,2 @@
+web: python manage.py prodserver
+worker: python manage.py run_huey
