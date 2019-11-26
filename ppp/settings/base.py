@@ -151,4 +151,6 @@ PUSHER = {
     'ssl': True
 }
 
+SESSION_COOKIE_SAMESITE = None
+
 from ppp.settings.auth import *
