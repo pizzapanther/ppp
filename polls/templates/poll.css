@@ -1,3 +1,11 @@
+.tc {
+  text-align: center;
+}
+
+.spacing .v-btn {
+  margin: 5px;
+}
+
 .waiting  {
   text-align: center;
   font-weight: bold;

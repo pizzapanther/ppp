@@ -75,3 +75,8 @@ def vote(request, slug):
     obj.save()
 
   return http.JsonResponse({'status': 'recorded'})
+
+
+def login_view(request):
+  n = request.GET.get('next', '/')
+  return TemplateResponse(request, 'login.html', {'next': n})
