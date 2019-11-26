@@ -5,7 +5,6 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.shortcuts import get_object_or_404
 from django.template.response import TemplateResponse
 from django.views.decorators.csrf import csrf_exempt
-from django.views.decorators.clickjacking import xframe_options_exempt
 
 import pusher
 
@@ -19,7 +18,6 @@ def presentation(request, slug):
   return TemplateResponse(request, 'presentation.html', context)
 
 
-@xframe_options_exempt
 @staff_member_required
 def embed(request, slug, pid):
   pres = get_object_or_404(Presentation, slug=slug)
