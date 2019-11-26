@@ -5,7 +5,7 @@ var PollComponent = {
   <h2>{{ data.question }}</h2>
   <div v-if="admin" class="admin-questions">
     <div v-for="(choice, index) in data.choices" :key="index">
-      {{ index + 1 }}. {{ choice }}
+      <strong>{{ index + 1 }}. {{ choice }}</strong>
     </div>
   </div>
   <div class="choices" v-else>

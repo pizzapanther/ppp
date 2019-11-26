@@ -22,6 +22,11 @@
   margin: 10px 0;
 }
 
+.admin-questions > div {
+  margin: 3px 0;
+  font-weight: bold;
+}
+
 .choices {
   display: flex;
   flex-wrap: wrap;
