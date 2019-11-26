@@ -29,7 +29,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', None)
 
 ALLOWED_HOSTS = [
     'localhost',
-    'pizzapanther.ngrok.io'
+    'pizzapanther.ngrok.io',
+    'pizzapanther-poll.herokuapp.com',
 ]
 
 
