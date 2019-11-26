@@ -1,0 +1,47 @@
+<!DOCTYPE html>{% load static %}
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <title>Login</title>
+  <style>
+    {% include "poll.css" %}
+  </style>
+</head>
+<body>
+  <div id="app">
+    <v-app>
+      <v-content>
+        <v-container>
+          <div class="tc spacing">
+            <br>
+            Login with:<br><br>
+            <v-btn href="{% url "social:begin" "facebook" %}?next={{ next }}" color="primary">
+              Facebook
+            </v-btn>
+            <v-btn href="{% url "social:begin" "github" %}?next={{ next }}" color="primary">
+              Github
+            </v-btn>
+            <v-btn href="{% url "social:begin" "reddit" %}?next={{ next }}" color="primary">
+              Reddit
+            </v-btn>
+            <v-btn href="{% url "social:begin" "twitter" %}?next={{ next }}" color="primary">
+              Twitter
+            </v-btn>
+          </div>
+        </v-container>
+      </v-content>
+    </v-app>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      vuetify: new Vuetify()
+    });
+  </script>
+</body>
+</html>
