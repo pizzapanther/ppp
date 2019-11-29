@@ -34,6 +34,7 @@ class Poll(models.Model):
 
     return {
       'id': self.id,
+      'slug': self.presentation.slug,
       'question': self.question,
       'choices': self.choices,
       'votes': votes

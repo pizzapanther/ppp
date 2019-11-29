@@ -6,6 +6,12 @@
   margin: 5px;
 }
 
+h3.location {
+  float: right;
+  margi: 0 10px 10px 10px;
+  font-weight: normal;
+}
+
 .waiting  {
   text-align: center;
   font-weight: bold;
