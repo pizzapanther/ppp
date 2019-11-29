@@ -26,6 +26,9 @@ var app = new Vue({
       }
     });
   },
+  mounted() {
+    this.start_poll();
+  },
   methods: {
     stats(data) {
       console.log(data);
