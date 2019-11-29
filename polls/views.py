@@ -86,3 +86,6 @@ def vote(request, slug):
 def login_view(request):
   n = request.GET.get('next', '/')
   return TemplateResponse(request, 'login.html', {'next': n})
+
+def page_view(request, page=None):
+  return TemplateResponse(request, page + '.html', {})
