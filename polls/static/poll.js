@@ -2,7 +2,7 @@ var PollComponent = {
   props: ['data', 'admin'],
   template: `
 <div class="poll">
-  <h3 class="location">{{ location.hostname }}/{{ data.slug }}</h3>
+  <h3 class="location" v-if="!admin">{{ location.hostname }}/{{ data.slug }}</h3>
   <h2>{{ data.question }}</h2>
   <div v-if="admin" class="admin-questions">
     <div v-for="(choice, index) in data.choices" :key="index">
