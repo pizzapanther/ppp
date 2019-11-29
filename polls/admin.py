@@ -23,10 +23,17 @@ class PollForm(forms.ModelForm):
 class PollInline(admin.TabularInline):
   model = Poll
 
+def reset_votes(modeladmin, request, queryset):
+    ids = queryset.values_list('id', flat=True)
+    Vote.objects.filter(poll__presentation__in=ids).delete()
+
+reset_votes.short_description = "Reset Votes"
+
 @admin.register(Presentation)
 class PresentationAdmin(admin.ModelAdmin):
   list_display = ('title', 'slug')
   inlines = [PollInline]
+  actions = [reset_votes]
 
 @admin.register(Poll)
 class PollAdmin(admin.ModelAdmin):
