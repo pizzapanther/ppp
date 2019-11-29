@@ -37,7 +37,11 @@ class PresentationAdmin(admin.ModelAdmin):
 
 @admin.register(Poll)
 class PollAdmin(admin.ModelAdmin):
-  list_display = ('question', 'presentation', 'live')
+  list_display = ('question', 'presentation', 'live', 'total_votes')
   raw_id_fields = ('presentation',)
   inlines = [VoteInline]
   form = PollForm
+
+  def total_votes(self, obj):
+    if obj:
+      return obj.vote_set.all().count()
