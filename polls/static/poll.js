@@ -23,6 +23,7 @@ var PollComponent = {
   <div class="donut">
     <apexchart type=donut width=300 :options="opts" :series="series" />
   </div>
+  <div>Votes: {{ data.total }}</div>
 </div>`,
   data() {
     return {

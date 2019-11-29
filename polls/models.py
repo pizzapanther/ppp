@@ -37,7 +37,8 @@ class Poll(models.Model):
       'slug': self.presentation.slug,
       'question': self.question,
       'choices': self.choices,
-      'votes': votes
+      'votes': votes,
+      'total': self.vote_set.all().count(),
     }
 
 
