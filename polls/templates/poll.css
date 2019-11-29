@@ -12,6 +12,11 @@ h3.location {
   font-weight: normal;
 }
 
+
+.start a {
+  color: green;
+}
+
 .waiting  {
   text-align: center;
   font-weight: bold;

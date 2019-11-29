@@ -12,9 +12,9 @@
 </head>
 <body>
   {% if not loaded %}
-  <div class="tc">
+  <div class="tc start">
     <br>
-    <h2><a href="?loaded={% now 'U' %}">Load: {{ poll.question }}</a></h2>
+    <h2><a href="?loaded={% now 'U' %}">Start: {{ poll.question }}</a></h2>
   </div>
   {% else %}
   <div id="app">
