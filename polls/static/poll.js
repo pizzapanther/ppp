@@ -2,7 +2,11 @@ var PollComponent = {
   props: ['data', 'admin'],
   template: `
 <div class="poll">
-  <h3 class="location" v-if="admin">{{ location.hostname }}/{{ data.slug }}</h3>
+  <h3 class="location" v-if="admin">
+    <span>{{ location.hostname }}/{{ data.slug }}</span>
+    <br>
+    <span>Votes: {{ data.total }}</span>
+  </h3>
   <h2>{{ data.question }}</h2>
   <div v-if="admin" class="admin-questions">
     <div v-for="(choice, index) in data.choices" :key="index">
@@ -23,7 +27,7 @@ var PollComponent = {
   <div class="donut">
     <apexchart type=donut width=300 :options="opts" :series="series" />
   </div>
-  <div>Votes: {{ data.total }}</div>
+  <div v-if="!admin">Votes: {{ data.total }}</div>
 </div>`,
   data() {
     return {
