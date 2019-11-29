@@ -1,5 +1,5 @@
 body {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
 }
 
 .tc {
@@ -12,7 +12,7 @@ body {
 
 h3.location {
   float: right;
-  margi: 0 10px 10px 10px;
+  margi: 0 20px 20px 20px;
   font-weight: normal;
 }
 
