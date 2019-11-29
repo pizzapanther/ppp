@@ -25,6 +25,9 @@
           <v-btn @click="end_poll()" v-if="started">
             End
           </v-btn>
+          <v-btn @click="start_poll()" v-else>
+            Start
+          </v-btn> &nbsp;&nbsp;
           {% verbatim %}{{ time }}{% endverbatim %}
         </v-container>
       </v-content>
