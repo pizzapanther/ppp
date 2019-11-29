@@ -19,6 +19,13 @@
           <poll v-if="poll_data" :data="poll_data" :admin="false"></poll>
           <div class="waiting" v-else>
             Waiting for next poll
+            <br><br>
+            <v-progress-circular
+              :size="70"
+              :width="7"
+              color="primary"
+              indeterminate
+            ></v-progress-circular>
           </div>
         </v-container>
       </v-content>
