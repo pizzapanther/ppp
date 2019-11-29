@@ -11,6 +11,12 @@
   </style>
 </head>
 <body>
+  {% if not loaded %}
+  <div class="tc">
+    <br>
+    <h2><a href="?loaded={% now 'U' %}">Load: {{ poll.question }}</a></h2>
+  </div>
+  {% else %}
   <div id="app">
     <v-app>
       <v-content>
@@ -41,5 +47,6 @@
   <script src="https://js.pusher.com/5.0/pusher.min.js"></script>
   <script src="{% static 'poll.js' %}"></script>
   <script src="{% static 'ppp-embed.js' %}"></script>
+  {% endif %}
 </body>
 </html>

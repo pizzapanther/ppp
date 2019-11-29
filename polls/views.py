@@ -22,7 +22,13 @@ def presentation(request, slug):
 def embed(request, slug, pid):
   pres = get_object_or_404(Presentation, slug=slug)
   poll = get_object_or_404(Poll, id=pid, presentation__slug=slug)
-  context = {'pres': pres, 'poll': poll, 'key': settings.PUSHER['key']}
+  loaded = request.GET.get('loaded')
+  context = {
+    'loaded': loaded,
+    'pres': pres,
+    'poll': poll,
+    'key': settings.PUSHER['key']
+  }
   return TemplateResponse(request, 'embed.html', context)
 
 
