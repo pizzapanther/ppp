@@ -154,5 +154,6 @@ PUSHER = {
 SESSION_COOKIE_SECURE = True
 SESSION_COOKIE_SAMESITE = 'none'
 CSRF_COOKIE_SAMESITE = 'none'
+CSRF_COOKIE_SECURE = True
 
 from ppp.settings.auth import *
