@@ -1,2 +1,3 @@
 python manage.py migrate --noinput
 python manage.py collectstatic --noinput
+sed -i 's/lax/none/g' /app/.heroku/python/lib/python3.8/site-packages/django/http/response.py
