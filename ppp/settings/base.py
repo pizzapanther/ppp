@@ -152,5 +152,6 @@ PUSHER = {
 }
 
 SESSION_COOKIE_SAMESITE = None
+CSRF_COOKIE_SAMESITE = None
 
 from ppp.settings.auth import *
